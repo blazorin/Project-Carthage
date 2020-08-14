@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Carthage.Entidades;
+using System;
 
 namespace Project_Carthage
 {
@@ -6,7 +7,12 @@ namespace Project_Carthage
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Primaria,
+                ciudad: "Boulogne-Billancourt", pais: "Francia"
+                );
+
+            Console.WriteLine(escuela);
+
         }
     }
 }
