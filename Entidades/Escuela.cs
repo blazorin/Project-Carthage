@@ -1,6 +1,8 @@
-﻿namespace Project_Carthage.Entidades
+﻿using System.Collections.Generic;
+
+namespace Project_Carthage.Entidades
 {
-    class Escuela
+    public class Escuela
     {
         private string nombre;
         public string Nombre
@@ -17,7 +19,7 @@
 
         public TiposEscuela TipoEscuela { get; set; }
 
-        public Curso[] Cursos { get; set; }
+        public List<Curso> Cursos { get; set; }
 
         public Escuela(string nombre, int year) => (Nombre, YearOfCreation) = (nombre, year);
 

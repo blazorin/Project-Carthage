@@ -1,5 +1,6 @@
 ﻿using Project_Carthage.Entidades;
 using System;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace Project_Carthage
@@ -8,19 +9,26 @@ namespace Project_Carthage
     {
         static void Main(string[] args)
         {
-            var escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Primaria,
-                ciudad: "Boulogne-Billancourt", pais: "Francia");
 
-            escuela.Cursos = new Curso[] {
-                new Curso(){Nombre = "Curso 101"},
-                new Curso(){Nombre = "Curso 201"},
-                new Curso(){Nombre = "Curso 301"}
-        };
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
 
+            
+            //Predicate<Curso> miAlgoritmo = predicado;
+            
+            /*
+            escuela.Cursos.RemoveAll(delegate (Curso cur) 
+                                    {
+                                        return cur.Nombre == "301";
+                                    });
 
-            ImprimirCursosEscuela(escuela);
+            escuela.Cursos.RemoveAll((cur) => cur.Nombre == "301" && cur.Jornada == TiposJornada.Mañana);
+            */
+
+            ImprimirCursosEscuela(engine.Escuela);
             
         }
+
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
@@ -38,11 +46,12 @@ namespace Project_Carthage
             }
         }
 
-        private static void ImprimirCursosWhile(Curso[] arregloCursos)
+        /*
+        private static void ImprimirCursosWhile(List<Curso> arregloCursos)
         {
             int contador = 0;
 
-            while (contador < arregloCursos.Length)
+            while (contador < arregloCursos.Count)
             {
                 Console.WriteLine($"Nombre {arregloCursos[contador].Nombre} ," +
                     $" Id {arregloCursos[contador].UniqueId}");
@@ -78,5 +87,7 @@ namespace Project_Carthage
                     $" Id {curso.UniqueId}");
             }
         }
+        */
     }
+        
 }
