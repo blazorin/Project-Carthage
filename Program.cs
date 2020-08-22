@@ -1,6 +1,5 @@
 ﻿using Project_Carthage.Entidades;
-using System;
-using System.Collections.Generic;
+using Project_Carthage.Utils;
 using static System.Console;
 
 namespace Project_Carthage
@@ -13,7 +12,6 @@ namespace Project_Carthage
             var engine = new EscuelaEngine();
             engine.Inicializar();
 
-            
             //Predicate<Curso> miAlgoritmo = predicado;
             
             /*
@@ -26,15 +24,15 @@ namespace Project_Carthage
             */
 
             ImprimirCursosEscuela(engine.Escuela);
+            Write(engine.Escuela.TipoEscuela);
             
         }
 
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
-            WriteLine(new String('=', 15));
-            WriteLine("Cursos del Colegio");
-            WriteLine(new String('=', 15));
+            Printer.WriteTitle("Academia Kadic");
+            Printer.Beeep(10000, cantidad: 5);
 
 
             if (escuela?.Cursos != null)

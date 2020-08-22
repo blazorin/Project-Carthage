@@ -28,6 +28,7 @@ namespace Project_Carthage.Entidades
             (Nombre, YearOfCreation) = (nombre, year);
             Pais = pais;
             Ciudad = ciudad;
+            TipoEscuela = tipo;
         }
 
         public override string ToString()

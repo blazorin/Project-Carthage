@@ -16,7 +16,7 @@ namespace Project_Carthage
         public void Inicializar()
         {
 
-            Escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Primaria,
+            Escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Secundaria,
             ciudad: "Boulogne-Billancourt", pais: "Francia");
 
             Escuela.Cursos = new List<Curso>
