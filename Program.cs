@@ -24,7 +24,8 @@ namespace Project_Carthage
             */
 
             ImprimirCursosEscuela(engine.Escuela);
-            Write(engine.Escuela.TipoEscuela);
+            Write($"Escuela: {engine.Escuela.TipoEscuela} \r\n");
+            GetEstudiantes(engine.Escuela);
             
         }
 
@@ -41,6 +42,26 @@ namespace Project_Carthage
                 {
                     WriteLine($"Nombre {curso.Nombre} ," + $" Id {curso.UniqueId}");
                 }
+            }
+        }
+        private static void GetEstudiantes(Escuela escuela)
+        {
+            foreach (var curso in escuela.Cursos)
+            {
+                Printer.WriteTitle(curso.Nombre);
+                WriteLine("Tipo de Jornada: " + curso.Jornada);
+
+                foreach (var alumno in curso.Alumno)
+                {
+                    Printer.WriteTitle(alumno.Nombre);
+
+                    foreach (var evaluacion in alumno.Evaluaciones)
+                    {
+                        WriteLine($"{evaluacion.Nombre}\r\n{"Asignatura: " + evaluacion.Asignatura.Nombre}\r\n{"Nota: " + evaluacion.Nota}\r\n{"ID: " + evaluacion.UniqueId}");
+                        WriteLine(new string('=', 10));
+                    }
+                }
+
             }
         }
 
