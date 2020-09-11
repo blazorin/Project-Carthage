@@ -2,14 +2,16 @@
 
 namespace Project_Carthage.Entidades
 {
-    public class Escuela
+    public class Escuela : ParentEntity
     {
+        /*
         private string nombre;
         public string Nombre
         {
             get { return nombre; }
             set { nombre = value.ToUpper(); }
         }
+        */
 
         public int YearOfCreation { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using Project_Carthage.Entidades;
 using Project_Carthage.Utils;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace Project_Carthage
@@ -26,7 +27,27 @@ namespace Project_Carthage
             ImprimirCursosEscuela(engine.Escuela);
             Write($"Escuela: {engine.Escuela.TipoEscuela} \r\n");
             GetEstudiantes(engine.Escuela);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.WriteTitle("Pruebas de Polimorfismo");
+
+            var alumnoTest = new Alumno{Nombre ="Clara La Pajera"};
+
+            var parentEntities = engine.GetParentEntities();
             
+            foreach(var item in parentEntities)
+            {
+                /*
+                if ((item as Alumno) != null)
+                {
+                    Write("SEX -> " + items.GetType());
+                }
+                */
+            }
+
+
+
         }
 
 

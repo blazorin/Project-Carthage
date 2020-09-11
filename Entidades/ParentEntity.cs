@@ -4,9 +4,16 @@ using System.Text;
 
 namespace Project_Carthage.Entidades
 {
-    public class ParentEntity
+    public abstract class ParentEntity
     {
         public string UniqueId { get; internal set; }
         public string Nombre { get; set; }
+
+        public ParentEntity() => UniqueId = Guid.NewGuid().ToString();
+
+        public override string ToString()
+        {
+            return $"{Nombre},{UniqueId}";
+        }
     }
 }

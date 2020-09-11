@@ -1,20 +1,14 @@
 ﻿using Project_Carthage.Entidades;
-using Project_Carthage.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Console;
-using System.Text;
 
 namespace Project_Carthage
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
         public Escuela Escuela { get; set; }
 
-        public EscuelaEngine()
-        {
-        }
 
         public void Inicializar()
         {
@@ -47,12 +41,35 @@ namespace Project_Carthage
             }
         }
 
+        public List<ParentEntity> GetParentEntities()
+        {
+            List<ParentEntity> listaObj = new List<ParentEntity>();
+            listaObj.Add(Escuela);
+            listaObj.AddRange(Escuela.Cursos);
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                listaObj.AddRange(curso.Asignaturas);
+                listaObj.AddRange(curso.Alumno);
+
+                foreach (var alumno in curso.Alumno)
+                {
+                    listaObj.Add(alumno);
+
+                }
+            }
+
+            return listaObj;
+        }
+
         private void InicializarEvaluaciones()
         {
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var alumno in curso.Alumno)
                 {
+                    Evaluacion
+
                     int contador = 0;
 
                     foreach (var asignatura in curso.Asignaturas)
@@ -61,15 +78,17 @@ namespace Project_Carthage
 
                         if (alumno.Evaluaciones == null)
                         {
-                            alumno.Evaluaciones = new List<Evaluaciones>();
+                            alumno.Evaluaciones = new List<Evaluacion>();
                         }
 
-                        alumno.Evaluaciones.Add(new Evaluaciones
+                        alumno.Evaluaciones.Add(new Evaluacion
                         {
+                            evOwner = alumno,
                             Asignatura = asignatura,
                             Nota = notaRandom(),
                             Nombre = $"Evaluación: {contador}"
                         });
+
                     }
                 }
             }
@@ -78,7 +97,7 @@ namespace Project_Carthage
         private static float notaRandom()
         {
             Random rN = new Random();
-            float resultado = (float) rN.NextDouble() * 10;
+            float resultado = (float)rN.NextDouble() * 10;
 
             return resultado;
         }
@@ -87,8 +106,8 @@ namespace Project_Carthage
         {
             foreach (var curso in Escuela.Cursos)
             {
-                List<Asignatura> listaAsignaturas = new List<Asignatura>() 
-                { 
+                List<Asignatura> listaAsignaturas = new List<Asignatura>()
+                {
                     new Asignatura() {Nombre = "Francés"},
                     new Asignatura() {Nombre = "Español"},
                     new Asignatura() {Nombre = "Química"},

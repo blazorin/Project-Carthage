@@ -5,7 +5,7 @@ namespace Project_Carthage.Entidades
 {
     public class Alumno : ParentEntity
     {
-        public Alumno() => UniqueId = Guid.NewGuid().ToString();
-        public List<Evaluaciones> Evaluaciones { get; set; }
+        public List<Evaluacion> Evaluaciones { get; set; }
+        
     }
 }
