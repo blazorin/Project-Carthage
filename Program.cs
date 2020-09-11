@@ -32,7 +32,7 @@ namespace Project_Carthage
             Printer.DrawLine(20);
             Printer.WriteTitle("Pruebas de Polimorfismo");
 
-            var alumnoTest = new Alumno{Nombre ="Clara La Pajera"};
+            var alumnoTest = new Alumno{Nombre ="Teresa de Calcuta"};
 
             var parentEntities = engine.GetParentEntities();
             
