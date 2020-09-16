@@ -18,7 +18,7 @@ namespace Project_Carthage.Entidades
             Printer.DrawLine();
 
             Console.WriteLine("Limpiando Curso...");
-            Console.WriteLine($"Curso {Nombre} esta limpio");
+            Console.WriteLine($"Curso {Nombre} está limpio");
         }
     }
 }
