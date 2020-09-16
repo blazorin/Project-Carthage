@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Project_Carthage.Utils;
+using System;
+using System.Collections.Generic;
 
 namespace Project_Carthage.Entidades
 {
-    public class Escuela : ParentEntity
+    public class Escuela : ParentEntity, iLugar
     {
         /*
         private string nombre;
@@ -18,6 +20,8 @@ namespace Project_Carthage.Entidades
         public string Pais { get; set; }
 
         public string Ciudad { get; set; }
+
+        public string Direccion { get; set; }
 
         public TiposEscuela TipoEscuela { get; set; }
 
@@ -39,5 +43,20 @@ namespace Project_Carthage.Entidades
             return $"Nombre: \"{Nombre}\", Tipo: {TipoEscuela} {newLine} Pais: {Pais}, Ciudad: {Ciudad}";
         }
 
+        public void LimpiarLugar()
+        {
+            Printer.DrawLine();
+
+            Console.WriteLine("Limpiando Escuela...");
+
+            Console.Beep(1500, 3);
+
+            foreach(var curso in Cursos)
+            {
+                curso.LimpiarLugar();
+            }
+
+            Printer.WriteTitle($"Escuela {Nombre} está limpia");
+        }
     }
 }

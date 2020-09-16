@@ -9,38 +9,6 @@ namespace Project_Carthage
     {
         public Escuela Escuela { get; set; }
 
-
-        public void Inicializar()
-        {
-
-            Escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Secundaria,
-            ciudad: "Boulogne-Billancourt", pais: "Francia");
-
-            InicializarCursos();
-            InicializarAsignaturas();
-            InicializarEvaluaciones();
-        }
-
-        private void InicializarCursos()
-        {
-            Escuela.Cursos = new List<Curso>
-            {
-                new Curso(){Nombre = "Curso 101", Jornada = TiposJornada.Mañana},
-                new Curso(){Nombre = "Curso 201", Jornada = TiposJornada.Mañana},
-                new Curso(){Nombre = "Curso 301", Jornada = TiposJornada.Tarde},
-                new Curso(){Nombre = "Curso 404", Jornada = TiposJornada.Tarde},
-                new Curso(){Nombre = "Curso 504", Jornada = TiposJornada.Noche}
-            };
-
-            Random random = new Random();
-
-            foreach (var curso in Escuela.Cursos)
-            {
-                int cantidadRandom = random.Next(15, 25);
-                curso.Alumno = InicializarAlumnos(cantidadRandom);
-            }
-        }
-
         public List<ParentEntity> GetParentEntities()
         {
             List<ParentEntity> listaObj = new List<ParentEntity>();
@@ -62,13 +30,44 @@ namespace Project_Carthage
             return listaObj;
         }
 
+        #region InitMethods
+        public void Inicializar()
+        {
+
+            Escuela = new Escuela("Academia Kadik", 1998, TiposEscuela.Secundaria,
+            ciudad: "Boulogne-Billancourt", pais: "Francia");
+
+            InicializarCursos();
+            InicializarAsignaturas();
+            InicializarEvaluaciones();
+        }
+
+        private void InicializarCursos()
+        {
+            Escuela.Cursos = new List<Curso>   
+            {
+                new Curso(){Nombre = "Curso 101", Jornada = TiposJornada.Mañana},
+                new Curso(){Nombre = "Curso 201", Jornada = TiposJornada.Mañana},
+                new Curso(){Nombre = "Curso 301", Jornada = TiposJornada.Tarde},
+                new Curso(){Nombre = "Curso 404", Jornada = TiposJornada.Tarde},
+                new Curso(){Nombre = "Curso 504", Jornada = TiposJornada.Noche}
+            };
+
+            Random random = new Random();
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                int cantidadRandom = random.Next(15, 25);
+                curso.Alumno = InicializarAlumnos(cantidadRandom);
+            }
+        }
+
         private void InicializarEvaluaciones()
         {
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var alumno in curso.Alumno)
                 {
-                    Evaluacion
 
                     int contador = 0;
 
@@ -132,5 +131,6 @@ namespace Project_Carthage
 
             return listaAlumnos.OrderBy((alumno) => alumno.UniqueId).Take(maxAlumnado).ToList();
         }
+        #endregion
     }
 }

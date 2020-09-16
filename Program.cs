@@ -1,6 +1,8 @@
 ﻿using Project_Carthage.Entidades;
 using Project_Carthage.Utils;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security;
 using static System.Console;
 
 namespace Project_Carthage
@@ -46,8 +48,12 @@ namespace Project_Carthage
                 */
             }
 
+            var iLugarLista = from obj in parentEntities
+                              where obj is iLugar
+                              select (iLugar) obj;
 
-
+            //engine.Escuela.LimpiarLugar();
+            
         }
 
 
