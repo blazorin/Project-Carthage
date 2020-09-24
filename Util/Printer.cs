@@ -23,7 +23,7 @@ namespace Project_Carthage.Utils
         {
             while (cantidad > 0)
             {
-                Console.Beep(hz, time);
+                //Console.Beep(hz, time);
                 cantidad--;
             }
 
