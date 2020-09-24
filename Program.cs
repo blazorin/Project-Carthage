@@ -14,7 +14,6 @@ namespace Project_Carthage
 
             var engine = new EscuelaEngine();
             engine.Inicializar();
-            engine.Inicializar()
 
             //Predicate<Curso> miAlgoritmo = predicado;
 
