@@ -14,9 +14,10 @@ namespace Project_Carthage
 
             var engine = new EscuelaEngine();
             engine.Inicializar();
+            engine.Inicializar()
 
             //Predicate<Curso> miAlgoritmo = predicado;
-            
+
             /*
             escuela.Cursos.RemoveAll(delegate (Curso cur) 
                                     {
@@ -34,11 +35,11 @@ namespace Project_Carthage
             Printer.DrawLine(20);
             Printer.WriteTitle("Pruebas de Polimorfismo");
 
-            var alumnoTest = new Alumno{Nombre ="Teresa de Calcuta"};
+            var alumnoTest = new Alumno { Nombre = "Teresa de Calcuta" };
 
             var parentEntities = engine.GetParentEntities();
-            
-            foreach(var item in parentEntities)
+
+            foreach (var item in parentEntities)
             {
                 /*
                 if ((item as Alumno) != null)
@@ -50,10 +51,10 @@ namespace Project_Carthage
 
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
-                              select (iLugar) obj;
+                              select (iLugar)obj;
 
             //engine.Escuela.LimpiarLugar();
-            
+
         }
 
 
@@ -135,5 +136,5 @@ namespace Project_Carthage
         }
         */
     }
-        
+
 }
