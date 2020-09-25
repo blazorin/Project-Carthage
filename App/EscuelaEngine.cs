@@ -10,20 +10,32 @@ namespace Project_Carthage
         public Escuela Escuela { get; set; }
 
         public List<ParentEntity> GetParentEntities(
+            out int conteoEvaluaciones,
+            out int conteoAsignaturas,
+            out int ConteoAlumnos,
+            out int ConteoCursos,
             bool traerEvaluaciones = true,
             bool traerAlumnos = true,
             bool traerAsignaturas = true,
             bool traerCursos = true
             )
         {
+            // Asignación multiple
+            ConteoAlumnos = conteoAsignaturas = conteoEvaluaciones = 0;
+
             List<ParentEntity> listaObj = new List<ParentEntity>();
             listaObj.Add(Escuela);
 
             if (traerCursos)
                 listaObj.AddRange(Escuela.Cursos);
 
+            ConteoCursos = Escuela.Cursos.Count;
+
             foreach (var curso in Escuela.Cursos)
             {
+                conteoAsignaturas += curso.Asignaturas.Count;
+                ConteoAlumnos += curso.Alumno.Count;
+
                 if (traerAsignaturas)
                     listaObj.AddRange(curso.Asignaturas);
 
@@ -35,7 +47,7 @@ namespace Project_Carthage
                     foreach (var alumno in curso.Alumno)
                     {
                         listaObj.AddRange(alumno.Evaluaciones);
-
+                        conteoEvaluaciones += alumno.Evaluaciones.Count;
                     }
                 }
             }
