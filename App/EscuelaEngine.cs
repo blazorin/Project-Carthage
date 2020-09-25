@@ -9,21 +9,34 @@ namespace Project_Carthage
     {
         public Escuela Escuela { get; set; }
 
-        public List<ParentEntity> GetParentEntities()
+        public List<ParentEntity> GetParentEntities(
+            bool traerEvaluaciones = true,
+            bool traerAlumnos = true,
+            bool traerAsignaturas = true,
+            bool traerCursos = true
+            )
         {
             List<ParentEntity> listaObj = new List<ParentEntity>();
             listaObj.Add(Escuela);
-            listaObj.AddRange(Escuela.Cursos);
+
+            if (traerCursos)
+                listaObj.AddRange(Escuela.Cursos);
 
             foreach (var curso in Escuela.Cursos)
             {
-                listaObj.AddRange(curso.Asignaturas);
-                listaObj.AddRange(curso.Alumno);
+                if (traerAsignaturas)
+                    listaObj.AddRange(curso.Asignaturas);
 
-                foreach (var alumno in curso.Alumno)
+                if (traerAlumnos)
+                    listaObj.AddRange(curso.Alumno);
+
+                if (traerEvaluaciones)
                 {
-                    listaObj.Add(alumno);
+                    foreach (var alumno in curso.Alumno)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
 
+                    }
                 }
             }
 
@@ -44,7 +57,7 @@ namespace Project_Carthage
 
         private void InicializarCursos()
         {
-            Escuela.Cursos = new List<Curso>   
+            Escuela.Cursos = new List<Curso>
             {
                 new Curso(){Nombre = "Curso 101", Jornada = TiposJornada.Mañana},
                 new Curso(){Nombre = "Curso 201", Jornada = TiposJornada.Mañana},

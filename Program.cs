@@ -20,7 +20,7 @@ namespace Project_Carthage
             /*
             escuela.Cursos.RemoveAll(delegate (Curso cur) 
                                     {
-                                        return cur.Nombre == "301";
+                                       return cur.Nombre == "301";
                                     });
 
             escuela.Cursos.RemoveAll((cur) => cur.Nombre == "301" && cur.Jornada == TiposJornada.Mañana);
@@ -36,7 +36,7 @@ namespace Project_Carthage
 
             var alumnoTest = new Alumno { Nombre = "Teresa de Calcuta" };
 
-            var parentEntities = engine.GetParentEntities();
+            List<ParentEntity> parentEntities = engine.GetParentEntities();
 
             foreach (var item in parentEntities)
             {
