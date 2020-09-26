@@ -36,8 +36,11 @@ namespace Project_Carthage
 
             var alumnoTest = new Alumno { Nombre = "Teresa de Calcuta" };
 
-            var parentEntities = engine.GetParentEntities(traerEvaluaciones: false);
-
+            var parentEntities = engine.GetParentEntities(out int conteoEvaluaciones,
+            out int conteoAsignaturas,
+            out int ConteoAlumnos,
+            out int ConteoCursos,
+            true, true, true, true);
 
             foreach (var item in parentEntities)
             {
