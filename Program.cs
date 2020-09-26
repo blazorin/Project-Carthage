@@ -68,7 +68,7 @@ namespace Project_Carthage
             {
                 foreach (var curso in escuela.Cursos)
                 {
-                    WriteLine($"Nombre {curso.Nombre} ," + $" Id {curso.UniqueId}");
+                    WriteLine($"Nombre {curso.Nombre} , Id {curso.UniqueId}");
                 }
             }
         }
