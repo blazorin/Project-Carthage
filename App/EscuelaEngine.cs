@@ -55,6 +55,23 @@ namespace Project_Carthage
             return listaObj.AsReadOnly();
         }
 
+        public Dictionary<string, IEnumerable<ParentEntity>> getObjectDictionary()
+        {
+            var diccionario = new Dictionary<string, IEnumerable<ParentEntity>>();
+
+            /*
+            IEnumerable<ParentEntity> o = new List<ParentEntity>();
+            List<Curso> c = new List<Curso>();
+
+            o = c.Cast<ParentEntity>();
+            */
+
+            diccionario.Add("Escuela", new Escuela[] { Escuela });
+            diccionario.Add("Cursos", Escuela.Cursos);
+
+            return diccionario;
+        }
+
         #region InitMethods
         public void Inicializar()
         {
