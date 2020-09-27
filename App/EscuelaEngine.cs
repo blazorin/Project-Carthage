@@ -9,7 +9,7 @@ namespace Project_Carthage
     {
         public Escuela Escuela { get; set; }
 
-        public List<ParentEntity> GetParentEntities(
+        public IReadOnlyList<ParentEntity> GetParentEntities(
             out int conteoEvaluaciones,
             out int conteoAsignaturas,
             out int ConteoAlumnos,
@@ -52,7 +52,7 @@ namespace Project_Carthage
                 }
             }
 
-            return listaObj;
+            return listaObj.AsReadOnly();
         }
 
         #region InitMethods
