@@ -22,7 +22,7 @@ namespace Project_Carthage
                                     {
                                        return cur.Nombre == "301";
                                     });
-
+            
             escuela.Cursos.RemoveAll((cur) => cur.Nombre == "301" && cur.Jornada == TiposJornada.Mañana);
             */
 
