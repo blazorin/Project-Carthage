@@ -52,6 +52,29 @@ namespace Project_Carthage
                 */
             }
 
+            Dictionary<int, string> diccionario = new Dictionary<int, string>();
+
+            diccionario.Add(1, "Franz");
+            diccionario.Add(2, "Sissi");
+
+            foreach (var keyValPair in diccionario)
+            {
+                WriteLine($"Key {keyValPair.Key} , {keyValPair.Value}");
+            }
+
+            Printer.WriteTitle("Diálogo");
+            Dictionary<string, string> dico = new Dictionary<string, string>();
+
+            dico.Add("Franz", "Franz Hopper, padre de Aelita y creador de Lyoko.");
+            dico.Add("Aelita", "Hija de Franz Hopper.");
+            dico.Add("Jeremy", "Estudiante de la academia " + engine.Escuela.Nombre + ".");
+
+            foreach (KeyValuePair<string, string> keyValPair in dico)
+            {
+                //if (keyValPair.Key is string)
+                WriteLine($"{keyValPair.Key}: {keyValPair.Value}");
+            }
+
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
                               select (iLugar)obj;
