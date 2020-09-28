@@ -55,9 +55,9 @@ namespace Project_Carthage
             return listaObj.AsReadOnly();
         }
 
-        public Dictionary<string, IEnumerable<ParentEntity>> getObjectDictionary()
+        public Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> getObjectDictionary()
         {
-            var diccionario = new Dictionary<string, IEnumerable<ParentEntity>>();
+            var diccionario = new Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>>();
 
             /*
             IEnumerable<ParentEntity> o = new List<ParentEntity>();
@@ -66,8 +66,8 @@ namespace Project_Carthage
             o = c.Cast<ParentEntity>();
             */
 
-            diccionario.Add("Escuela", new Escuela[] { Escuela });
-            diccionario.Add("Cursos", Escuela.Cursos);
+            diccionario.Add(LLaveDiccionario.Escuela, new Escuela[] { Escuela });
+            diccionario.Add(LLaveDiccionario.Curso, Escuela.Cursos);
 
             return diccionario;
         }
