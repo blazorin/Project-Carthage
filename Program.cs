@@ -75,6 +75,8 @@ namespace Project_Carthage
                 WriteLine($"{keyValPair.Key}: {keyValPair.Value}");
             }
 
+            Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> obtainedDico = engine.getObjectDictionary();
+
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
                               select (iLugar)obj;

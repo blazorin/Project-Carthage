@@ -66,8 +66,27 @@ namespace Project_Carthage
             o = c.Cast<ParentEntity>();
             */
 
+            var listaAlumnostmp = new List<Alumno>();
+            var listaEvaluacionestmp = new List<Evaluacion>();
+            var listaAsignaturastmp = new List<Asignatura>();
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                listaAlumnostmp.AddRange(curso.Alumno);
+                listaAsignaturastmp.AddRange(curso.Asignaturas);
+
+                foreach (var alumno in curso.Alumno)
+                {
+                    listaEvaluacionestmp.AddRange(alumno.Evaluaciones);
+
+                }
+
+            }
             diccionario.Add(LLaveDiccionario.Escuela, new Escuela[] { Escuela });
-            diccionario.Add(LLaveDiccionario.Curso, Escuela.Cursos);
+            diccionario.Add(LLaveDiccionario.Alumno, listaAlumnostmp);
+            diccionario.Add(LLaveDiccionario.Asignatura, listaAsignaturastmp);
+            diccionario.Add(LLaveDiccionario.Evaluacion, listaEvaluacionestmp);
+
 
             return diccionario;
         }
