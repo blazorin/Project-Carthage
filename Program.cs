@@ -77,6 +77,9 @@ namespace Project_Carthage
 
             Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> obtainedDico = engine.getObjectDictionary();
 
+
+            ImprimirDiccionario(obtainedDico);
+
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
                               select (iLugar)obj;
@@ -100,6 +103,34 @@ namespace Project_Carthage
                 }
             }
         }
+
+        public static void ImprimirDiccionario(Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> dico)
+        {
+
+            foreach (var obj in dico)
+            {
+                Printer.WriteTitle(obj.Key.ToString());
+
+                foreach (var val in obj.Value)
+                {
+                    WriteLine(val);
+
+                }
+
+                if (obj.Key == LLaveDiccionario.Alumno)
+                {
+                    List<Alumno> alumnosRec = (List<Alumno>)obj.Value;
+                    foreach (Alumno alum in alumnosRec)
+                    {
+                        WriteLine(alum.Nombre);
+                    }
+                }
+
+            }
+
+        }
+
+
         private static void GetEstudiantes(Escuela escuela)
         {
             foreach (var curso in escuela.Cursos)
