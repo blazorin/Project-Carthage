@@ -104,7 +104,9 @@ namespace Project_Carthage
             }
         }
 
-        public static void ImprimirDiccionario(Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> dico)
+        public static void ImprimirDiccionario(Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> dico,
+            bool imprimirEval = false
+            )
         {
 
             foreach (var obj in dico)
