@@ -115,7 +115,14 @@ namespace Project_Carthage
 
                 foreach (var val in keyValPair.Value)
                 {
-                    WriteLine(val);
+                    switch (keyValPair.Key)
+                    {
+
+
+                        default:
+                            WriteLine(val);
+                            break;
+                    }
 
                 }
 
