@@ -155,7 +155,7 @@ namespace Project_Carthage
             }
         }
 
-        private static float notaRandom()
+        private float notaRandom()
         {
             Random rN = new Random();
             float resultado = (float)rN.NextDouble() * 10;
