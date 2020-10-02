@@ -109,19 +109,19 @@ namespace Project_Carthage
             )
         {
 
-            foreach (var obj in dico)
+            foreach (var keyValPair in dico)
             {
-                Printer.WriteTitle(obj.Key.ToString());
+                Printer.WriteTitle(keyValPair.Key.ToString());
 
-                foreach (var val in obj.Value)
+                foreach (var val in keyValPair.Value)
                 {
                     WriteLine(val);
 
                 }
 
-                if (obj.Key == LLaveDiccionario.Alumno)
+                if (keyValPair.Key == LLaveDiccionario.Alumno)
                 {
-                    List<Alumno> alumnosRec = (List<Alumno>)obj.Value;
+                    List<Alumno> alumnosRec = (List<Alumno>)keyValPair.Value;
                     foreach (Alumno alum in alumnosRec)
                     {
                         WriteLine(alum.Nombre);
