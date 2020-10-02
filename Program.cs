@@ -15,6 +15,10 @@ namespace Project_Carthage
 
             AppDomain.CurrentDomain.ProcessExit += SeTermina;
             AppDomain.CurrentDomain.ProcessExit += (o, a) => Console.Write("Chau");
+            AppDomain.CurrentDomain.ProcessExit += delegate (Object o, EventArgs a)
+            {
+                Console.Write("EXIT");
+            };
 
             var engine = new EscuelaEngine();
             engine.Inicializar();
