@@ -1,5 +1,6 @@
 ﻿using Project_Carthage.Entidades;
 using Project_Carthage.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -11,6 +12,9 @@ namespace Project_Carthage
     {
         static void Main(string[] args)
         {
+
+            AppDomain.CurrentDomain.ProcessExit += SeTermina;
+            AppDomain.CurrentDomain.ProcessExit += (o, a) => Console.Write("Chau");
 
             var engine = new EscuelaEngine();
             engine.Inicializar();
@@ -88,6 +92,10 @@ namespace Project_Carthage
 
         }
 
+        private static void SeTermina(object sender, EventArgs e)
+        {
+            Console.Write("Saliendo");
+        }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
