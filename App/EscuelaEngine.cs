@@ -8,6 +8,7 @@ namespace Project_Carthage
     public sealed class EscuelaEngine
     {
         public Escuela Escuela { get; set; }
+        private Random rN = null;
 
         public IReadOnlyList<ParentEntity> GetParentEntities(
             out int conteoEvaluaciones,
@@ -157,7 +158,10 @@ namespace Project_Carthage
 
         private float notaRandom()
         {
-            Random rN = new Random();
+
+            if (rN is null)
+                rN = new Random();
+
             float resultado = (float)rN.NextDouble() * 10;
 
             resultado = MathF.Round(resultado, 2);
