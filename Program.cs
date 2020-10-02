@@ -26,7 +26,7 @@ namespace Project_Carthage
             escuela.Cursos.RemoveAll((cur) => cur.Nombre == "301" && cur.Jornada == TiposJornada.Mañana);
             */
 
-            ImprimirCursosEscuela(engine.Escuela);
+            //ImprimirCursosEscuela(engine.Escuela);
             Write($"Escuela: {engine.Escuela.TipoEscuela} \r\n");
             GetEstudiantes(engine.Escuela);
             Printer.DrawLine(20);
@@ -78,7 +78,7 @@ namespace Project_Carthage
             Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> obtainedDico = engine.getObjectDictionary();
 
 
-            ImprimirDiccionario(obtainedDico);
+            ImprimirDiccionario(obtainedDico, true);
 
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
@@ -118,21 +118,52 @@ namespace Project_Carthage
                     switch (keyValPair.Key)
                     {
 
+                        case LLaveDiccionario.Escuela:
+
+                            WriteLine("Escuela: " + val);
+                            break;
+
+                        case LLaveDiccionario.Alumno:
+                            WriteLine("Alumno: " + val);
+                            break;
+
+                        case LLaveDiccionario.Asignatura:
+                            WriteLine("Asignatura: " + val);
+                            break;
+
+                        case LLaveDiccionario.Curso:
+
+                            if ((val as Curso) != null)
+                            {
+                                Curso cursotmp = (Curso)val;
+                                WriteLine($"Curso: {cursotmp} , {cursotmp.Alumno.Count}");
+
+                            }
+                            break;
+
+                        case LLaveDiccionario.Evaluacion:
+                            if (imprimirEval)
+                            {
+                                WriteLine("Evaluacion: " + val);
+                            }
+
+                            break;
 
                         default:
                             WriteLine(val);
                             break;
                     }
-
-                }
-
-                if (keyValPair.Key == LLaveDiccionario.Alumno)
-                {
-                    List<Alumno> alumnosRec = (List<Alumno>)keyValPair.Value;
-                    foreach (Alumno alum in alumnosRec)
+                    /*
+                    if (keyValPair.Key == LLaveDiccionario.Alumno)
                     {
-                        WriteLine(alum.Nombre);
+                        List<Alumno> alumnosRec = (List<Alumno>)keyValPair.Value;
+                        foreach (Alumno alum in alumnosRec)
+                        {
+                            WriteLine(alum.Nombre);
+                        }
                     }
+                    */
+
                 }
 
             }

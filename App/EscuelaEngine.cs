@@ -85,6 +85,7 @@ namespace Project_Carthage
             diccionario.Add(LLaveDiccionario.Escuela, new Escuela[] { Escuela });
             diccionario.Add(LLaveDiccionario.Alumno, listaAlumnostmp);
             diccionario.Add(LLaveDiccionario.Asignatura, listaAsignaturastmp);
+            diccionario.Add(LLaveDiccionario.Curso, Escuela.Cursos);
             diccionario.Add(LLaveDiccionario.Evaluacion, listaEvaluacionestmp);
 
 
@@ -158,6 +159,8 @@ namespace Project_Carthage
         {
             Random rN = new Random();
             float resultado = (float)rN.NextDouble() * 10;
+
+            resultado = MathF.Round(resultado, 2);
 
             return resultado;
         }

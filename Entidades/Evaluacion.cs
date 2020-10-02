@@ -15,7 +15,7 @@ namespace Project_Carthage.Entidades
 
         public override string ToString()
         {
-            return $"{Nota},{evOwner.Nombre},{Asignatura.Nombre}";
+            return $"{Nota},{evOwner.Nombre}, {Asignatura.Nombre}";
         }
     }
 }
