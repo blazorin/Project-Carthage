@@ -8,8 +8,14 @@ namespace Project_Carthage.App
     {
         Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> _diccionario;
 
-        public Reporteador()
+        public Reporteador(Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> diccionario)
         {
+            if (diccionario is null)
+            {
+                throw new ArgumentNullException(nameof(diccionario));
+            }
+
+            _diccionario = diccionario;
         }
     }
 }
