@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Project_Carthage.Entidades;
 
@@ -16,6 +17,23 @@ namespace Project_Carthage.App
             }
 
             _diccionario = diccionario;
+        }
+
+        public IEnumerable<Escuela> GetListaEscuelas()
+        {
+            IEnumerable<Escuela> rta;
+
+            if (_diccionario.TryGetValue(LLaveDiccionario.Escuela, out IEnumerable<ParentEntity> lista))
+            {
+                rta = lista.Cast<Escuela>();
+                return rta;
+            }
+            {
+                throw new NullReferenceException(nameof(Escuela) + " is null");
+            }
+
+
+
         }
     }
 }
