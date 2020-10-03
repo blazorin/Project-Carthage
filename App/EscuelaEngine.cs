@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Project_Carthage
+namespace Project_Carthage.App
 {
     public sealed class EscuelaEngine
     {
