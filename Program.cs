@@ -89,6 +89,8 @@ namespace Project_Carthage
 
             ImprimirDiccionario(obtainedDico, true);
 
+            Reporteador reporteador = new Reporteador(obtainedDico);
+
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
                               select (iLugar)obj;
