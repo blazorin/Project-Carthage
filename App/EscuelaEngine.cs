@@ -8,7 +8,7 @@ namespace Project_Carthage.App
     public sealed class EscuelaEngine
     {
         public Escuela Escuela { get; set; }
-        private Random rN = null;
+        private Random rN;
 
         public IReadOnlyList<ParentEntity> GetParentEntities(
             out int conteoEvaluaciones,
