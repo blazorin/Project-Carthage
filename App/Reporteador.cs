@@ -19,21 +19,33 @@ namespace Project_Carthage.App
             _diccionario = diccionario;
         }
 
-        public IEnumerable<Escuela> GetListaEscuelas()
+        public IEnumerable<Evaluacion> GetListaEvaluaciones()
         {
-            IEnumerable<Escuela> rta;
 
-            if (_diccionario.TryGetValue(LLaveDiccionario.Escuela, out IEnumerable<ParentEntity> lista))
+            if (_diccionario.TryGetValue(LLaveDiccionario.Evaluacion, out IEnumerable<ParentEntity> lista))
             {
-                rta = lista.Cast<Escuela>();
-                return rta;
+                return lista.Cast<Evaluacion>();
             }
             {
-                throw new NullReferenceException(nameof(Escuela) + " is null");
+                return new List<Evaluacion>();
+                //throw new NullReferenceException(nameof(Escuela) + " is null");
             }
 
+        }
 
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = GetListaEvaluaciones();
 
+            return (from Evaluacion ev in listaEvaluaciones
+                    select ev.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetDicoAsignXEv()
+        {
+            var dicoRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+
+            return dicoRta;
         }
     }
 }
