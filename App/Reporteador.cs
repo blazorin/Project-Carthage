@@ -32,10 +32,14 @@ namespace Project_Carthage.App
             }
 
         }
-
         public IEnumerable<string> GetListaAsignaturas()
         {
-            var listaEvaluaciones = GetListaEvaluaciones();
+            return GetListaAsignaturas(out var dummy);
+        }
+
+        public IEnumerable<string> GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluaciones();
 
             return (from Evaluacion ev in listaEvaluaciones
                     select ev.Asignatura.Nombre).Distinct();
@@ -44,6 +48,17 @@ namespace Project_Carthage.App
         public Dictionary<string, IEnumerable<Evaluacion>> GetDicoAsignXEv()
         {
             var dicoRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+            var listaAsignaturas = GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones);
+
+            foreach (var asignatura in listaAsignaturas)
+            {
+                var evalAsig = from Evaluacion eval in listaEvaluaciones
+                               where eval.Asignatura.Nombre == asignatura
+                               select eval;
+
+                dicoRta.Add(asignatura, evalAsig);
+
+            }
 
             return dicoRta;
         }
