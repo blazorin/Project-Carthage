@@ -70,13 +70,13 @@ namespace Project_Carthage.App
 
             foreach (var asignConEvaus in dicoAsignXEv)
             {
-                var dummy = from eval in asignConEvaus.Value
+                var dummy = from Evaluacion eval in asignConEvaus.Value
+                            group eval by eval.evOwner.UniqueId
+                            into grupoEvalsAlumno
                             select new
                             {
-                                eval.evOwner.UniqueId,
-                                NombreAlumno = eval.evOwner.Nombre,
-                                NombreEval = eval.Nombre,
-                                eval.Nota
+                                AlumnoId = grupoEvalsAlumno.Key,
+                                Promedio = grupoEvalsAlumno.Average((Evaluacion evaluacion) => evaluacion.Nota)
                             };
             }
 
