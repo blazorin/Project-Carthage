@@ -71,11 +71,11 @@ namespace Project_Carthage.App
             foreach (var asignConEvaus in dicoAsignXEv)
             {
                 var dummy = from Evaluacion eval in asignConEvaus.Value
-                            group eval by eval.evOwner.UniqueId
+                            group eval by eval.evOwner.Nombre
                             into grupoEvalsAlumno
                             select new
                             {
-                                AlumnoId = grupoEvalsAlumno.Key,
+                                Nombre = grupoEvalsAlumno.Key,
                                 Promedio = grupoEvalsAlumno.Average((Evaluacion evaluacion) => evaluacion.Nota)
                             };
             }
