@@ -62,5 +62,23 @@ namespace Project_Carthage.App
 
             return dicoRta;
         }
+
+        public Dictionary<string, IEnumerable<object>> GetPromedioAlumno()
+        {
+            var dicoRta = new Dictionary<string, IEnumerable<object>>();
+            var dicoAsignXEv = GetDicoAsignXEv();
+
+            foreach (var asignConEvaus in dicoAsignXEv)
+            {
+                var dummy = from eval in asignConEvaus.Value
+                            select new
+                            {
+                                eval.evOwner.UniqueId,
+                                NombreAlumno = eval.evOwner.Nombre,
+                                NombreEval = eval.Nombre,
+                                eval.Nota
+                            };
+            }
+        }
     }
 }
