@@ -93,6 +93,18 @@ namespace Project_Carthage
             IEnumerable<Evaluacion> listaEvaluaciones = reporteador.GetListaEvaluaciones();
             var listaAsignaturas = reporteador.GetListaAsignaturas();
             var DicoAsignXEv = reporteador.GetDicoAsignXEv();
+            var DicoPromXAsig = reporteador.GetPromedioAlumno();
+
+            /*
+            foreach (var item in DicoPromXAsig)
+            {
+                foreach (var alumno in item.Value)
+                {
+
+                }
+
+            }
+            */
 
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
