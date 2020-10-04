@@ -79,6 +79,8 @@ namespace Project_Carthage.App
                                 eval.Nota
                             };
             }
+
+            return dicoRta;
         }
     }
 }
