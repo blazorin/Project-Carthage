@@ -90,6 +90,7 @@ namespace Project_Carthage
             ImprimirDiccionario(obtainedDico, true);
 
             Reporteador reporteador = new Reporteador(obtainedDico);
+            IEnumerable<Escuela> listaEscuelas = reporteador.GetListaEscuelas();
 
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar
