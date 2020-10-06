@@ -117,6 +117,24 @@ namespace Project_Carthage
 
             //engine.Escuela.LimpiarLugar();
 
+            Printer.WriteTitle("Evaluacion por terminal");
+            var newEval = new Evaluacion();
+            string nombre;
+            float nota;
+
+            WriteLine("Escribe el nombre de la Evaluacion");
+            Printer.Enter();
+            nombre = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(nombre))
+            {
+                throw new ArgumentException("El valor del nombre no puede estar vacío");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+            }
+
         }
 
         private static void SeTermina(object sender, EventArgs e)
