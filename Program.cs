@@ -133,6 +133,7 @@ namespace Project_Carthage
             else
             {
                 newEval.Nombre = nombre.ToLower();
+                WriteLine("Has elegido " + newEval.Nombre + " para el nombre de la Evaluacion");
             }
 
         }
