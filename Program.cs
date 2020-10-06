@@ -119,14 +119,13 @@ namespace Project_Carthage
 
             Printer.WriteTitle("Evaluacion por terminal");
             var newEval = new Evaluacion();
-            string nombre;
-            float nota;
+            string nombre, notastring;
 
             WriteLine("Escribe el nombre de la Evaluacion");
             Printer.Enter();
             nombre = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(nombre))
+            if (string.IsNullOrWhiteSpace(nombre))
             {
                 throw new ArgumentException("El valor del nombre no puede estar vacío");
             }
@@ -134,6 +133,37 @@ namespace Project_Carthage
             {
                 newEval.Nombre = nombre.ToLower();
                 WriteLine("Has elegido " + newEval.Nombre + " para el nombre de la Evaluacion");
+            }
+
+            WriteLine("Escribe la nota de la Evaluación");
+            Printer.Enter();
+            notastring = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(notastring))
+            {
+                throw new ArgumentException("El valor de la nota no puede estar vacío");
+            }
+            else
+            {
+                try
+                {
+                    newEval.Nota = float.Parse(notastring);
+
+                    if (newEval.Nota < 0 || newEval.Nota > 10)
+                    {
+                        throw new ArgumentOutOfRangeException("La nota debe estar entre el rango de 0 a 10");
+                    }
+
+                    WriteLine("Has elegido " + newEval.Nota + " para la nota de la Evaluacion");
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    WriteLine(ex.Message);
+                }
+                catch (Exception)
+                {
+                    WriteLine("La nota no es un número válido");
+                }
             }
 
         }
