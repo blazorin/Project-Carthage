@@ -10,6 +10,11 @@ namespace Project_Carthage.Utils
             WriteLine(new String('=', tamaño));
         }
 
+        public static void Enter()
+        {
+            WriteLine("Presione Enter para continuar");
+        }
+
         public static void WriteTitle(string titulo)
         {
             var longitud = titulo.Length + 4;
