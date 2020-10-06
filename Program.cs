@@ -95,16 +95,21 @@ namespace Project_Carthage
             var DicoAsignXEv = reporteador.GetDicoAsignXEv();
             var DicoPromXAsig = reporteador.GetPromedioAlumno();
 
-            /*
-            foreach (var item in DicoPromXAsig)
-            {
-                foreach (var alumno in item.Value)
-                {
+            var MejoresAlumnos = reporteador.GetMejoresAlumnos(DicoPromXAsig);
 
+            // default index is 5, change it to whatever you want except +- 2147483647
+
+            foreach (var item in MejoresAlumnos)
+            {
+                Utils.Printer.WriteTitle($"Mejores {item.Value.Count()} Alumnos de {item.Key}");
+
+                foreach (var bestAlumnoAsignatura in item.Value)
+                {
+                    WriteLine($"{bestAlumnoAsignatura.Nombre} -> {bestAlumnoAsignatura.Promedio}");
                 }
 
             }
-            */
+
 
             var iLugarLista = from obj in parentEntities
                               where obj is iLugar

@@ -63,9 +63,9 @@ namespace Project_Carthage.App
             return dicoRta;
         }
 
-        public Dictionary<string, IEnumerable<object>> GetPromedioAlumno()
+        public Dictionary<string, IEnumerable<AlumnoCualificado>> GetPromedioAlumno()
         {
-            var dicoRta = new Dictionary<string, IEnumerable<object>>();
+            var dicoRta = new Dictionary<string, IEnumerable<AlumnoCualificado>>();
             var dicoAsignXEv = GetDicoAsignXEv();
 
             foreach (var asignConEvaus in dicoAsignXEv)
@@ -73,13 +73,41 @@ namespace Project_Carthage.App
                 var promAlum = from Evaluacion eval in asignConEvaus.Value
                                group eval by eval.evOwner.Nombre
                             into grupoEvalsAlumno
-                               select new
+                               select new AlumnoCualificado
                                {
                                    Nombre = grupoEvalsAlumno.Key,
                                    Promedio = grupoEvalsAlumno.Average((Evaluacion evaluacion) => evaluacion.Nota)
                                };
 
                 dicoRta.Add(asignConEvaus.Key, promAlum);
+            }
+
+            return dicoRta;
+        }
+
+        public Dictionary<string, IEnumerable<AlumnoCualificado>> GetMejoresAlumnos(Dictionary<string, IEnumerable<AlumnoCualificado>> AsignaturaAndPromedio, int index = 5)
+        {
+            Dictionary<string, IEnumerable<AlumnoCualificado>> dicoAsigsPromedios;
+            var dicoRta = new Dictionary<string, IEnumerable<AlumnoCualificado>>();
+
+            if (AsignaturaAndPromedio != null)
+            {
+                dicoAsigsPromedios = AsignaturaAndPromedio;
+            }
+            else
+            {
+                Console.Write(nameof(dicoAsigsPromedios) + "is null");
+                dicoAsigsPromedios = new Dictionary<string, IEnumerable<AlumnoCualificado>>();
+            }
+
+            foreach (var AsignaturaAndPromediosElement in dicoAsigsPromedios)
+            {
+                var MejoresAlumnosAsignatura = (from AlumnoCualificado alumno in AsignaturaAndPromediosElement.Value
+                                                orderby alumno.Promedio descending
+                                                select alumno).Take(index);
+
+                dicoRta.Add(AsignaturaAndPromediosElement.Key, MejoresAlumnosAsignatura);
+
             }
 
             return dicoRta;
