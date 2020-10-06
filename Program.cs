@@ -164,6 +164,11 @@ namespace Project_Carthage
                 {
                     WriteLine("La nota no es un número válido");
                 }
+
+                finally
+                {
+                    WriteLine("Evaluacion por terminal finalizado");
+                }
             }
 
         }
