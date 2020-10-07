@@ -117,17 +117,118 @@ namespace Project_Carthage
 
             //engine.Escuela.LimpiarLugar();
 
-            Printer.WriteTitle("Evaluacion por terminal");
+            ConsolaMenusDialogs(1);
+
+
+
+        }
+
+        private static void SeTermina(object sender, EventArgs e)
+        {
+            Console.Write("Saliendo");
+        }
+
+        private static void ImprimirCursosEscuela(Escuela escuela)
+        {
+            Printer.WriteTitle("Academia Kadic");
+            Printer.Beeep(10000, cantidad: 5);
+
+
+            if (escuela?.Cursos != null)
+            {
+                foreach (var curso in escuela.Cursos)
+                {
+                    WriteLine($"Nombre {curso.Nombre} , Id {curso.UniqueId}");
+                }
+            }
+        }
+
+        public static void ConsolaMenusDialogs(int dialog)
+        {
+
+            switch (dialog)
+            {
+                case 1:
+                    Console.WriteLine();
+                    Printer.WriteTitle("Menu Principal");
+
+                    SelectMainOptionConsola();
+
+                    break;
+
+                case 2:
+                    Console.WriteLine();
+                    Printer.WriteTitle("Evaluacion por terminal");
+
+                    CrearEvaluacionConsola();
+
+                    break;
+
+
+                default:
+                    WriteLine("Ha ocurrido un error");
+                    Printer.DrawLine(10);
+
+                    ConsolaMenusDialogs(1);
+                    break;
+            }
+
+        }
+
+        public static void SelectMainOptionConsola()
+        {
+            WriteLine("1 - Reporteador");
+            WriteLine("2 - Crear una Evaluacion");
+
+            Printer.DrawLine(10);
+            Printer.Enter();
+
+            string respuesta = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(respuesta))
+            {
+                WriteLine("El valor del nombre no puede estar vacío");
+                Printer.DrawLine(10);
+
+                SelectMainOptionConsola();
+
+            }
+            else if (respuesta == "1" || respuesta == "2")
+            {
+                WriteLine("Has elegido la opción " + respuesta);
+
+                if (respuesta == "1")
+                    ReporteadorPanelConsola();
+                else
+                    ConsolaMenusDialogs(2);
+            }
+            else
+            {
+                WriteLine("Escribe 1 o 2 para elegir una opción");
+                Printer.DrawLine(10);
+
+                SelectMainOptionConsola();
+            }
+        }
+
+        public static void ReporteadorPanelConsola()
+        {
+
+        }
+
+        public static void CrearEvaluacionConsola()
+        {
             var newEval = new Evaluacion();
             string nombre, notastring;
 
             WriteLine("Escribe el nombre de la Evaluacion");
-            Printer.Enter();
             nombre = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(nombre))
             {
-                throw new ArgumentException("El valor del nombre no puede estar vacío");
+                WriteLine("El valor del nombre no puede estar vacío");
+                ConsolaMenusDialogs(2);
+                return;
             }
             else
             {
