@@ -12,7 +12,7 @@ namespace Project_Carthage.Utils
 
         public static void Enter()
         {
-            WriteLine("Presione Enter para continuar");
+            WriteLine("Elige la opción y presione Enter para continuar");
         }
 
         public static void WriteTitle(string titulo)
