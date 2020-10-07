@@ -260,10 +260,12 @@ namespace Project_Carthage
                 catch (ArgumentOutOfRangeException ex)
                 {
                     WriteLine(ex.Message);
+                    ConsolaMenusDialogs(2);
                 }
                 catch (Exception)
                 {
                     WriteLine("La nota no es un número válido");
+                    ConsolaMenusDialogs(2);
                 }
 
                 finally
