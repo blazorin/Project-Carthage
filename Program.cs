@@ -238,12 +238,47 @@ namespace Project_Carthage
 
         public static void ReporteadorPanelConsola()
         {
+            WriteLine("1 - Mejores Alumnos");
+            WriteLine("2 - Asignaturas");
+            WriteLine("3 - Cursos");
+            WriteLine("4 - Salir");
+
+
+            string respuesta = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(respuesta))
+            {
+                WriteLine("No uses espacios");
+                Printer.DrawLine(10);
+
+                SelectMainOptionConsola();
+
+            }
+            else if (respuesta == "1" || respuesta == "2" | respuesta == "3")
+            {
+                int.Parse(respuesta);
+                WriteLine("Has elegido la opción " + respuesta);
+
+                if (respuesta == "1")
+                    ConsolaMenusDialogs(3);
+                else if (respuesta == "2")
+                    ConsolaMenusDialogs(4);
+                else
+                    ConsolaMenusDialogs(5);
+            }
+            else
+            {
+                WriteLine("Escribe 1, 2 o 3 para elegir una opción, 4 para salir");
+                Printer.DrawLine(10);
+
+                SelectMainOptionConsola();
+            }
 
         }
 
-        public static void MejoresAlumnos()
+        public static void MejoresAlumnos(Reporteador reporteador)
         {
-            reporteador = new Reporteador(obtainedDico)
+            if (reporteador is null) { WriteLine("Reporteador nulo"); return; }
 
             var DicoPromXAsig = reporteador.GetPromedioAlumno();
 
@@ -251,13 +286,35 @@ namespace Project_Carthage
 
             foreach (var item in MejoresAlumnos)
             {
-                Utils.Printer.WriteTitle($"Mejores {item.Value.Count()} Alumnos de {item.Key}");
+                Printer.WriteTitle($"Mejores {item.Value.Count()} Alumnos de {item.Key}");
 
                 foreach (var bestAlumnoAsignatura in item.Value)
                 {
                     WriteLine($"{bestAlumnoAsignatura.Nombre} -> {bestAlumnoAsignatura.Promedio}");
                 }
 
+            }
+        }
+
+        public static void Asignaturas(Reporteador reporteador)
+        {
+            if (reporteador is null) { WriteLine("Reporteador nulo"); return; }
+
+            var listaAsignaturas = reporteador.GetListaAsignaturas();
+
+            foreach (var item in listaAsignaturas)
+            {
+                WriteLine(item);
+            }
+        }
+
+        public static void Cursos(Escuela escuela)
+        {
+            if (escuela is null) { WriteLine("Escuela nula∫"); return; }
+
+            foreach (var curso in escuela.Cursos)
+            {
+                WriteLine($"Curso: {curso.Nombre} con {curso.Alumno.Count}");
             }
         }
 
