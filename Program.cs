@@ -271,28 +271,8 @@ namespace Project_Carthage
                     WriteLine("Evaluacion por terminal finalizado");
                 }
             }
-
         }
 
-        private static void SeTermina(object sender, EventArgs e)
-        {
-            Console.Write("Saliendo");
-        }
-
-        private static void ImprimirCursosEscuela(Escuela escuela)
-        {
-            Printer.WriteTitle("Academia Kadic");
-            Printer.Beeep(10000, cantidad: 5);
-
-
-            if (escuela?.Cursos != null)
-            {
-                foreach (var curso in escuela.Cursos)
-                {
-                    WriteLine($"Nombre {curso.Nombre} , Id {curso.UniqueId}");
-                }
-            }
-        }
 
         public static void ImprimirDiccionario(Dictionary<LLaveDiccionario, IEnumerable<ParentEntity>> dico,
             bool imprimirEval = false
