@@ -164,6 +164,12 @@ namespace Project_Carthage
 
                     break;
 
+                case 3:
+                    Console.WriteLine();
+                    Printer.WriteTitle("Mejores Alumnos");
+
+                    break;
+
 
                 default:
                     WriteLine("Ha ocurrido un error");
@@ -214,6 +220,26 @@ namespace Project_Carthage
         public static void ReporteadorPanelConsola()
         {
 
+        }
+
+        public static void MejoresAlumnos()
+        {
+            reporteador = new Reporteador(obtainedDico)
+
+            var DicoPromXAsig = reporteador.GetPromedioAlumno();
+
+            var MejoresAlumnos = reporteador.GetMejoresAlumnos(DicoPromXAsig);
+
+            foreach (var item in MejoresAlumnos)
+            {
+                Utils.Printer.WriteTitle($"Mejores {item.Value.Count()} Alumnos de {item.Key}");
+
+                foreach (var bestAlumnoAsignatura in item.Value)
+                {
+                    WriteLine($"{bestAlumnoAsignatura.Nombre} -> {bestAlumnoAsignatura.Promedio}");
+                }
+
+            }
         }
 
         public static void CrearEvaluacionConsola()
