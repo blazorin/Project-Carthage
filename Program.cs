@@ -237,12 +237,12 @@ namespace Project_Carthage
             }
 
             WriteLine("Escribe la nota de la Evaluación");
-            Printer.Enter();
             notastring = Console.ReadLine();
 
             if (string.IsNullOrEmpty(notastring))
             {
-                throw new ArgumentException("El valor de la nota no puede estar vacío");
+                WriteLine("El valor de la nota no puede estar vacio");
+                ConsolaMenusDialogs(2);
             }
             else
             {
