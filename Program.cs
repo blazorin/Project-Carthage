@@ -117,6 +117,10 @@ namespace Project_Carthage
 
             //engine.Escuela.LimpiarLugar();
 
+            RepEngine.Escuela = engine.Escuela;
+
+            RepEngine.Reporteador = reporteador;
+
             ConsolaMenusDialogs(1);
 
 
@@ -167,9 +171,23 @@ namespace Project_Carthage
                 case 3:
                     Console.WriteLine();
                     Printer.WriteTitle("Mejores Alumnos");
+                    MejoresAlumnos(RepEngine.Reporteador);
 
                     break;
 
+                case 4:
+                    Console.WriteLine();
+                    Printer.WriteTitle("Asignaturas");
+                    Asignaturas(RepEngine.Reporteador);
+
+                    break;
+
+                case 5:
+                    Console.WriteLine();
+                    Printer.WriteTitle("Cursos");
+                    Cursos(RepEngine.Escuela);
+
+                    break;
 
                 default:
                     WriteLine("Ha ocurrido un error");
@@ -193,7 +211,7 @@ namespace Project_Carthage
 
             if (string.IsNullOrWhiteSpace(respuesta))
             {
-                WriteLine("El valor del nombre no puede estar vacío");
+                WriteLine("No uses espacios");
                 Printer.DrawLine(10);
 
                 SelectMainOptionConsola();
@@ -201,6 +219,7 @@ namespace Project_Carthage
             }
             else if (respuesta == "1" || respuesta == "2")
             {
+                int.Parse(respuesta);
                 WriteLine("Has elegido la opción " + respuesta);
 
                 if (respuesta == "1")
@@ -367,7 +386,6 @@ namespace Project_Carthage
             }
 
         }
-
 
         private static void GetEstudiantes(Escuela escuela)
         {
